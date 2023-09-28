@@ -54,6 +54,11 @@ namespace OrderApi.Application.Services
             {
                 Id = product.Id,
                 Name = product.Name,
+                Category = product.Category,
+                Description= product.Description,
+                Manufacturer=   product.Manufacturer,
+                Price=  product.Price,
+                StockQuantity=  product.StockQuantity,
                 // Map other properties
             };
         }
@@ -64,6 +69,12 @@ namespace OrderApi.Application.Services
             return new Product
             {
                 Name = productDto.Name,
+                Category = productDto.Category,
+                Description = productDto.Description,
+                Manufacturer = productDto.Manufacturer,
+                Price = productDto.Price,
+                StockQuantity = productDto.StockQuantity,
+                Id  = productDto.Id,
                 // Map other properties
             };
         }

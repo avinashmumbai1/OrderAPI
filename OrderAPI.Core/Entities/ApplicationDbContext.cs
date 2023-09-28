@@ -12,6 +12,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<OrderItem> OrderItems { get; set; }
 
     public DbSet<Customer> Customers { get; set; }
+    public DbSet<Order> Orders { get; set; }
 
     // Add methods for CRUD operations for Product and OrderItem entities
     public async Task<int> AddProductAsync(Product product)
@@ -46,6 +47,44 @@ public class ApplicationDbContext : DbContext
     public async Task<OrderItem> GetOrderItemByIdAsync(int orderItemId)
     {
         return await OrderItems.FirstOrDefaultAsync(oi => oi.Id == orderItemId);
+    }
+
+    public async Task<int> AddOrderAsync(Order order)
+    {
+        if (order == null)
+        {
+            throw new ArgumentNullException(nameof(order));
+        }
+
+        Orders.Add(order);
+        await SaveChangesAsync();
+        return order.Id;
+    }
+
+    public async Task<Order> GetOrderByIdAsync(int orderId)
+    {
+        return await Orders.FirstOrDefaultAsync(o => o.Id == orderId);
+    }
+
+    public async Task UpdateOrderAsync(Order order)
+    {
+        if (order == null)
+        {
+            throw new ArgumentNullException(nameof(order));
+        }
+
+        Entry(order).State = EntityState.Modified;
+        await SaveChangesAsync();
+    }
+
+    public async Task DeleteOrderAsync(int orderId)
+    {
+        var order = await Orders.FindAsync(orderId);
+        if (order != null)
+        {
+            Orders.Remove(order);
+            await SaveChangesAsync();
+        }
     }
 
     // Add other methods for CRUD operations as needed

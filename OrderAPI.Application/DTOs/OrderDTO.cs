@@ -19,7 +19,7 @@ namespace OrderApi.Application.DTOs
         [StringLength(100, ErrorMessage = "Shipping address cannot exceed 100 characters.")]
         public string ShippingAddress { get; set; }
 
-        [Range(0.01, double.MaxValue, ErrorMessage = "Total price must be greater than 0.")]
+        //[Range(0.01, double.MaxValue, ErrorMessage = "Total price must be greater than 0.")]
         public decimal TotalPrice { get; set; }
         // Add other properties as needed for API responses
 
