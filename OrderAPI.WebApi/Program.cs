@@ -24,7 +24,11 @@
 
 //app.Run();    
 
-
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+using Serilog;
+using System;
+using System.IO;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
@@ -39,6 +43,7 @@ using AutoMapper;
 using OrderApi.Application.DTOs; // Adjust namespaces as needed
 using OrderApi.Domain.Entities;
 using System.Reflection;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -69,6 +74,7 @@ builder.Services.AddSwaggerGen(c =>
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     c.IncludeXmlComments(xmlPath);
 });
+
 // Add ProductService and OrderService to the container
 
 // Register repositories and services

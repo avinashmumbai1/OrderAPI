@@ -6,7 +6,7 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        CreateMap<Order, OrderDto>();
+        CreateMap<OrderApi.Domain.Entities.Order, OrderDto>();
         CreateMap<OrderDto, Order>();
         CreateMap<OrderItem, OrderItem>();
         CreateMap<Customer, CustomerDto>();
