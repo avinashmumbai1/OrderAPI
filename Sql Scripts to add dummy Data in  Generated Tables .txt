@@ -1,0 +1,25 @@
+SET IDENTITY_INSERT [dbo].[Products] ON
+INSERT INTO [dbo].[Products] ([Id], [Name], [Description], [Price], [StockQuantity], [Category], [Manufacturer]) VALUES (1, N'Avinash', N'Test', CAST(10.00 AS Decimal(18, 2)), 2, N'Test', N'Test')
+INSERT INTO [dbo].[Products] ([Id], [Name], [Description], [Price], [StockQuantity], [Category], [Manufacturer]) VALUES (2, N'Avinash', N'Test', CAST(10.00 AS Decimal(18, 2)), 2, N'Test', N'Test')
+INSERT INTO [dbo].[Products] ([Id], [Name], [Description], [Price], [StockQuantity], [Category], [Manufacturer]) VALUES (3, N'Avinash', N'Test', CAST(10.00 AS Decimal(18, 2)), 2, N'Test', N'Test')
+SET IDENTITY_INSERT [dbo].[Products] OFF
+
+
+SET IDENTITY_INSERT [dbo].[Orders] ON
+INSERT INTO [dbo].[Orders] ([Id], [CustomerId], [OrderDate]) VALUES (1, 1, N'2023-09-27 00:00:00')
+INSERT INTO [dbo].[Orders] ([Id], [CustomerId], [OrderDate]) VALUES (2, 2, N'2023-09-28 00:00:00')
+INSERT INTO [dbo].[Orders] ([Id], [CustomerId], [OrderDate]) VALUES (3, 3, N'2023-09-26 00:00:00')
+SET IDENTITY_INSERT [dbo].[Orders] OFF
+
+
+SET IDENTITY_INSERT [dbo].[OrderItems] ON
+INSERT INTO [dbo].[OrderItems] ([Id], [ProductId], [Quantity], [OrderId]) VALUES (1, 1, 20, 1)
+INSERT INTO [dbo].[OrderItems] ([Id], [ProductId], [Quantity], [OrderId]) VALUES (2, 2, 30, 2)
+INSERT INTO [dbo].[OrderItems] ([Id], [ProductId], [Quantity], [OrderId]) VALUES (3, 3, 100, 2)
+SET IDENTITY_INSERT [dbo].[OrderItems] OFF
+
+SET IDENTITY_INSERT [dbo].[Customers] ON
+INSERT INTO [dbo].[Customers] ([Id], [FirstName], [LastName], [Email], [RegistrationDate], [IsActive]) VALUES (1, N'John', N'Doe', N'johndoe@example.com', N'2023-09-26 00:00:00', 1)
+INSERT INTO [dbo].[Customers] ([Id], [FirstName], [LastName], [Email], [RegistrationDate], [IsActive]) VALUES (2, N'Jane', N'Smith', N'janesmith@example.com', N'2023-09-26 00:00:00', 1)
+INSERT INTO [dbo].[Customers] ([Id], [FirstName], [LastName], [Email], [RegistrationDate], [IsActive]) VALUES (3, N'Test', N'Tested', N'test@test.com', N'2023-09-26 00:00:00', 1)
+SET IDENTITY_INSERT [dbo].[Customers] OFF
