@@ -9,6 +9,7 @@ public class MappingProfile : Profile
         CreateMap<Order, OrderDto>();
         CreateMap<OrderDto, Order>();
         CreateMap<OrderItem, OrderItem>();
+        CreateMap<Customer, CustomerDto>();
         // Add more mappings as needed
     }
 }

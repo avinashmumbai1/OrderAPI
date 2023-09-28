@@ -11,6 +11,8 @@ public class ApplicationDbContext : DbContext
     public DbSet<Product> Products { get; set; }
     public DbSet<OrderItem> OrderItems { get; set; }
 
+    public DbSet<Customer> Customers { get; set; }
+
     // Add methods for CRUD operations for Product and OrderItem entities
     public async Task<int> AddProductAsync(Product product)
     {
@@ -124,6 +126,37 @@ public class ApplicationDbContext : DbContext
             // Specify custom table name for Products
             product.ToTable("Products");
         });
+
+         // Configure the Customer entity
+        modelBuilder.Entity<Customer>(customer =>
+        {
+            customer.HasKey(c => c.Id);
+            customer.Property(c => c.FirstName)
+                .IsRequired()
+                .HasMaxLength(100);
+            customer.Property(c => c.LastName)
+                .IsRequired()
+                .HasMaxLength(100);
+            customer.Property(c => c.Email)
+                .IsRequired()
+                .HasMaxLength(255)
+                .IsUnicode(false); // Use Unicode false for email
+            customer.Property(c => c.RegistrationDate)
+                .IsRequired();
+            customer.Property(c => c.IsActive)
+                .IsRequired();
+
+            // Specify custom table name for Customers
+            customer.ToTable("Customers");
+        });
+
+        // Define relationships between entities
+        // Configure the one-to-many relationship between Customer and Order
+        modelBuilder.Entity<Customer>()
+            .HasMany(c => c.Orders)
+            .WithOne()
+            .HasForeignKey(o => o.CustomerId)
+            .OnDelete(DeleteBehavior.Cascade);
 
         // Additional configurations for other entities can be added here
     }
